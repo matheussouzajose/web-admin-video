@@ -1,11 +1,18 @@
 <template>
-  <auth-component
+  <auth-view
     title="Crie sua conta"
     subtitle="Comece a gerenciar seus videos"
     component="FormSignUp"
   />
 </template>
 
-<script setup lang="ts">
-import AuthComponent from '@/components/Auth.vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import AuthView from '@/views/AuthView.vue'
+
+export default defineComponent({
+  components: {
+    AuthView
+  }
+})
 </script>
