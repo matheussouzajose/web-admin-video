@@ -1,12 +1,9 @@
 <template>
   <Form @submit="handleSignUp" :validation-schema="schema" v-slot="{ errors }">
-    <div>
-      <input-field label="Nome" type="text" name="firstName" id="firstName" placeholder="Digite seu nome" :errors="errors"/>
-      <input-field label="Sobrenome" type="text" name="lastName" id="elastNamemail" placeholder="Digite seu sobrenome" :errors="errors"/>
-      <input-field label="Email" type="email" name="email" id="email" placeholder="Digite seu email" :errors="errors"/>
-      <input-field label="Senha" type="password" name="password" id="password" placeholder="Digite sua senha" :errors="errors"/>
-    </div>
-
+    <input-field label="Nome" type="text" name="firstName" id="firstName" placeholder="Digite seu nome" :errors="errors"/>
+    <input-field label="Sobrenome" type="text" name="lastName" id="elastNamemail" placeholder="Digite seu sobrenome" :errors="errors"/>
+    <input-field label="Email" type="email" name="email" id="email" placeholder="Digite seu email" :errors="errors"/>
+    <input-field label="Senha" type="password" name="password" id="password" placeholder="Digite sua senha" :errors="errors"/>
     <button-auth type="submit" title="Criar" :loading="loading" />
     <router-link-auth class="mt-4" title="Já tem uma conta?" router-name="SignIn" subtitle="Faça login" />
   </Form>
