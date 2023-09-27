@@ -1,5 +1,5 @@
 <template>
-  <Form ref="loginForm" @submit="handleForgotPassword" :validation-schema="schema" v-slot="{ errors }">
+  <Form @submit="handleForgotPassword" :validation-schema="schema" v-slot="{ errors }">
     <input-field label="Email" type="email" name="email" id="email" placeholder="Digite seu email" :errors="errors"/>
     <button-auth type="submit" title="Recuperar" :loading="loading"/>
     <router-link-auth class="mt-4 flex justify-end" router-name="SignIn" subtitle="Voltar e logar?"/>

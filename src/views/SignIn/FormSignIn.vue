@@ -1,5 +1,5 @@
 <template>
-  <Form ref="loginForm" @submit="handleSignIn" :validation-schema="schema" v-slot="{ errors }">
+  <Form @submit="handleSignIn" :validation-schema="schema" v-slot="{ errors }">
     <input-field label="Email" type="email" name="email" id="email" placeholder="Digite seu email" :errors="errors"/>
     <input-field label="Senha" type="password" name="password" id="password" placeholder="Digite sua senha" :errors="errors"/>
 
