@@ -1,4 +1,4 @@
-export default function getErrors (response) {
+export default function getErrors (response: any): null|object {
   let errors = null
 
   if (!response.data && response.status !== 204) {

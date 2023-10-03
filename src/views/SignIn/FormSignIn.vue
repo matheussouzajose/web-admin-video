@@ -5,11 +5,11 @@
 
     <div class="flex items-center justify-between">
       <remember-checkbox :remember="rememberField" />
-      <router-link-auth router-name="ForgotPassword" subtitle="Esqueceu sua senha?" />
+      <router-link-auth router-name="forgot-password" subtitle="Esqueceu sua senha?" />
     </div>
 
     <button-auth type="submit" title="Entrar" :loading="loading"/>
-    <router-link-auth class="mt-4"  title="Não tem uma conta ainda?" router-name="SignUp" subtitle="Inscrever-se" />
+    <router-link-auth class="mt-4"  title="Não tem uma conta ainda?" router-name="sign-up" subtitle="Inscrever-se" />
   </Form>
 
   <div class="relative">
@@ -23,6 +23,7 @@
 
   <button
     type="submit"
+    @click="redirectToKeycloak"
     class="w-full bg-transparent border hover:bg-gray-100 focus:ring-1 focus:outline-none
     focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center
     dark:hover:bg-gray-700 dark:focus:ring-primary-gray dark:text-gray-100"
@@ -52,11 +53,12 @@
 
 import { defineComponent, ref } from 'vue'
 import { Form } from 'vee-validate'
-import * as Yup from 'yup'
 import InputField from '@/components/InputField.vue'
 import ButtonAuth from '@/components/ButtonAuth.vue'
 import RouterLinkAuth from '@/components/RouterLinkAuth.vue'
 import RememberCheckbox from '@/views/SignIn/RememberCheckbox.vue'
+import { mapActions } from '@/store/map-state'
+import * as Yup from 'yup'
 
 interface FormInterface {
   email: string;
@@ -75,7 +77,6 @@ export default defineComponent({
   setup () {
     const rememberField = ref(false)
     const loading = ref(false)
-
     const schema = Yup.object().shape({
       email: Yup.string()
         .required('Email é obrigatório.')
@@ -84,14 +85,18 @@ export default defineComponent({
         .min(8, 'A senha deve conter pelo menos 8 caracteres.')
         .required('Senha é obrigatória.')
     })
+
     const handleSignIn = (values: FormInterface) => {
       console.log('values', values)
     }
+
+    const { 'auth/redirectToKeycloak': redirectToKeycloak } = mapActions()
 
     return {
       schema,
       rememberField,
       loading,
+      redirectToKeycloak,
       handleSignIn
     }
   }
